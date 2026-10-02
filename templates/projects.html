@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Projects | Jayant Krishna Patgar{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container"><p class="eyebrow">MY WORK</p><h1>Projects</h1><p>Applications built while learning and exploring development.</p></div></section>
+<section class="section projects-page"><div class="container"><div class="project-grid project-grid-full">
+{% for project in projects %}<article class="project-card project-card-full"><div class="project-top"><span class="project-number">{{ '%02d'|format(loop.index) }}</span><span class="project-symbol">⌘</span></div><h2>{{ project.title }}</h2><p>{{ project.description }}</p>{% if project.technologies %}<div class="tags">{% for tech in project.technologies.split(',') %}<span>{{ tech.strip() }}</span>{% endfor %}</div>{% endif %}<div class="project-actions">{% if project.github_url %}<a href="{{ project.github_url }}" target="_blank" rel="noopener">GitHub ↗</a>{% endif %}{% if project.live_url %}<a href="{{ project.live_url }}" target="_blank" rel="noopener">Live Demo ↗</a>{% endif %}</div></article>
+{% else %}<p class="empty-state">No projects are available yet.</p>{% endfor %}
+</div></div></section>
+{% endblock %}

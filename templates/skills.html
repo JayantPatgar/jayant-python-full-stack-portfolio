@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}Skills | Jayant Krishna Patgar{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="container">
+        <p class="eyebrow">MY SKILLS</p>
+        <h1>Tools I Work With</h1>
+        <p>A growing toolkit for building full-stack applications.</p>
+    </div>
+</section>
+
+<section class="section skills-page">
+    <div class="container">
+
+        <div class="skills-intro">
+            <div>
+                <p class="eyebrow">TECHNICAL TOOLKIT</p>
+                <h2>From interface to database.</h2>
+            </div>
+
+            <p>
+                I am continuously improving these technologies through
+                coursework, internships and hands-on projects.
+            </p>
+        </div>
+
+        <div class="skills-grid-large">
+
+            {% for skill in skills %}
+
+            <article class="skill-card-large">
+
+                <div class="skill-top">
+
+                    <div class="skill-icon">
+                        {% if 'Python' in skill.name %}
+                            🐍
+                        {% elif 'JavaScript' in skill.name %}
+                            JS
+                        {% elif 'HTML' in skill.name %}
+                            &lt;/&gt;
+                        {% elif 'CSS' in skill.name %}
+                            #
+                        {% elif 'MySQL' in skill.name %}
+                            ▣
+                        {% elif 'Flask' in skill.name %}
+                            ⚗
+                        {% elif 'Git' in skill.name %}
+                            ⌘
+                        {% else %}
+                            ✦
+                        {% endif %}
+                    </div>
+
+                    <span>{{ skill.category or 'Technology' }}</span>
+
+                </div>
+
+                <h3>{{ skill.name }}</h3>
+
+            </article>
+
+            {% else %}
+
+            <p class="empty-state">
+                Skills will appear here after they are added to your database.
+            </p>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+</section>
+{% endblock %}

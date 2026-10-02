@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% block title %}Contact | Jayant Krishna Patgar{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+    <div class="container">
+        <p class="eyebrow">GET IN TOUCH</p>
+        <h1>Let's Talk</h1>
+        <p>Have an idea, opportunity or question? Send me a message.</p>
+    </div>
+</section>
+
+<section class="section contact-page">
+    <div class="container contact-grid">
+
+        <div class="contact-info">
+
+            <p class="eyebrow">CONTACT DETAILS</p>
+
+            <h2>
+                Let's connect and create something meaningful.
+            </h2>
+
+            <p>
+                I am open to learning opportunities, internships,
+                projects and conversations about technology.
+            </p>
+
+            <div class="contact-item">
+                <span>✉</span>
+                <div>
+                    <small>Email</small>
+                    <strong>jayant@gmail.com</strong>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <span>⌖</span>
+                <div>
+                    <small>Location</small>
+                    <strong>Kumta, Karnataka, India</strong>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <span>▣</span>
+                <div>
+                    <small>Focus</small>
+                    <strong>Python Full Stack Development</strong>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="contact-panel">
+
+            {% if contact_message %}
+
+                <div class="contact-message {{ contact_status }}">
+                    {{ contact_message }}
+                </div>
+
+            {% endif %}
+
+            <form
+                class="contact-form"
+                action="{{ url_for('contact') }}"
+                method="POST"
+            >
+
+                <div class="form-row">
+
+                    <label>
+                        Name
+
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Your name"
+                            {% if contact_status != 'success' %}
+                            value="{{ request.form.get('name','') }}"
+                            {% endif %}
+                            required
+                        >
+                    </label>
+
+                    <label>
+                        Email
+
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="your@email.com"
+                            {% if contact_status != 'success' %}
+                            value="{{ request.form.get('email','') }}"
+                            {% endif %}
+                            required
+                        >
+                    </label>
+
+                </div>
+
+                <label>
+                    Subject
+
+                    <input
+                        type="text"
+                        name="subject"
+                        placeholder="What would you like to discuss?"
+                        {% if contact_status != 'success' %}
+                        value="{{ request.form.get('subject','') }}"
+                        {% endif %}
+                        required
+                    >
+                </label>
+
+                <label>
+                    Message
+
+                    <textarea
+                        name="message"
+                        rows="7"
+                        placeholder="Write your message..."
+                        required
+                    >{% if contact_status != 'success' %}{{ request.form.get('message','') }}{% endif %}</textarea>
+
+                </label>
+
+                <button
+                    class="btn btn-primary"
+                    type="submit"
+                >
+                    Send Message ↗
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
