@@ -19,8 +19,4 @@ Admin pages have been removed.
 5. Open: `http://127.0.0.1:5000`
 
 
-## Latest changes
-- Contact form displays a clear success message after a successful submission.
-- Contact form fields clear after a successful submission.
-- Skill percentage/progress levels are removed from the portfolio UI.
-- Admin pages are not included.
+
